@@ -35,7 +35,7 @@ AppAsset::register($this);
             echo Nav::widget([
                 'options' => ['class' => 'navbar-nav navbar-left'],
                 'items' => [
-                    ['label' => 'SendMessage', 'url' => ['/site/index']],
+                    ['label' => 'SendMessage', 'url' => ['/sendmsg/send']],
                     ['label' => 'Report', 'url' => ['/site/about']],
                     ['label' => 'Student', 'url' => ['/student/index']],
                     ['label' => 'Group', 'url' => ['/major/index']],
