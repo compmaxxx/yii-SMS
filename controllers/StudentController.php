@@ -5,8 +5,6 @@ namespace app\controllers;
 use Yii;
 use app\models\Student;
 use app\models\StudentSearch;
-use app\models\Major;
-use app\models\Year;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -63,7 +61,6 @@ class StudentController extends Controller
     public function actionCreate()
     {
         $model = new Student();
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -121,4 +118,5 @@ class StudentController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
 }
