@@ -21,7 +21,8 @@ class AppAsset extends AssetBundle
         'css/site.css',
     ];
     public $js = [
-        'js/mimo84-bootstrap-maxlength-37c95be/src/bootstrap-maxlength.js'
+        'js/mimo84-bootstrap-maxlength-37c95be/src/bootstrap-maxlength.js',
+        'js/mimo84-bootstrap-maxlength-37c95be/sendMsg.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

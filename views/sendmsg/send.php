@@ -19,12 +19,3 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
 <?php ActiveForm::end(); ?>
-
-
-<script>
-	jQuery(document).ready(function(){
-		jQuery('#sendmsgform-msg').maxlength({
-            threshold: 20
-        });
-	});
-</script>
