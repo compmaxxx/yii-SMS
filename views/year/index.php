@@ -4,19 +4,19 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\MajorSearch */
+/* @var $searchModel app\models\YearSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Majors';
+$this->title = 'Years';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="major-index">
+<div class="year-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Major', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Year', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([
@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'name',
+            'year',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

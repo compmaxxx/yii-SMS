@@ -3,16 +3,16 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Major;
-use app\models\MajorSearch;
+use app\models\Year;
+use app\models\YearSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * MajorController implements the CRUD actions for Major model.
+ * YearController implements the CRUD actions for Year model.
  */
-class MajorController extends Controller
+class YearController extends Controller
 {
     public function behaviors()
     {
@@ -27,12 +27,12 @@ class MajorController extends Controller
     }
 
     /**
-     * Lists all Major models.
+     * Lists all Year models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new MajorSearch();
+        $searchModel = new YearSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -42,7 +42,7 @@ class MajorController extends Controller
     }
 
     /**
-     * Displays a single Major model.
+     * Displays a single Year model.
      * @param integer $id
      * @return mixed
      */
@@ -54,13 +54,13 @@ class MajorController extends Controller
     }
 
     /**
-     * Creates a new Major model.
+     * Creates a new Year model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Major();
+        $model = new Year();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -72,7 +72,7 @@ class MajorController extends Controller
     }
 
     /**
-     * Updates an existing Major model.
+     * Updates an existing Year model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -91,7 +91,7 @@ class MajorController extends Controller
     }
 
     /**
-     * Deletes an existing Major model.
+     * Deletes an existing Year model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -104,15 +104,15 @@ class MajorController extends Controller
     }
 
     /**
-     * Finds the Major model based on its primary key value.
+     * Finds the Year model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Major the loaded model
+     * @return Year the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Major::findOne($id)) !== null) {
+        if (($model = Year::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
