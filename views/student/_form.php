@@ -1,11 +1,20 @@
 <?php
 
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap\ActiveForm;
+use yii\helpers\ArrayHelper;
+use app\models\Major;
+use app\models\Year;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Student */
 /* @var $form yii\widgets\ActiveForm */
+
+$major = Major::find()->all();
+$listMajor = ArrayHelper::map($major,'id','name');
+
+$year = Year::find()->all();
+$listYear = ArrayHelper::map($year,'id','year');
 ?>
 
 <div class="student-form">
@@ -20,10 +29,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => 100]) ?>
 
-    <? /* $form->dropDownList($model,'major_id',$major,array('empty'=>'(Select Major)'))*/ ?>
-    <?= $form->field($model, 'major_id')->textInput(); ?>
+    <?= $form->field($model, 'major_id')->dropDownList($listMajor)->label('Major') ?>
 
-    <?= $form->field($model, 'year_id')->textInput() ?>
+    <?= $form->field($model, 'year_id')->dropDownList($listYear)->label('year') ?>
 
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
