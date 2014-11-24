@@ -35,12 +35,27 @@ AppAsset::register($this);
             echo Nav::widget([
 
                 'options' => ['class' => 'navbar-nav navbar-left'],
-
                 'items' => [
-                    ['label' => 'SendMessage', 'url' => ['/sendmsg/send']],
-                    ['label' => 'Report', 'url' => ['/site/about']],
-                    ['label' => 'Student', 'url' => ['/student/index']],
-                    ['label' => 'Group', 'url' => ['/major/index']],
+                    [
+                      'label' => 'SendMessage', 'url' => ['/sendmsg/send'],
+                      'active' => Yii::$app->controller->id=='sendmsg',
+                    ],
+                    [
+                      'label' => 'Report', 'url' => ['/site/about'],
+                      'active' => Yii::$app->controller->id=='site',
+                    ],
+                    [
+                      'label' => 'Student', 'url' => ['/student/index'],
+                      'active' => Yii::$app->controller->id=='student',
+                    ],
+                    [
+                      'label' => 'Major', 'url' => ['/major/index'],
+                      'active' => Yii::$app->controller->id=='major',
+                    ],
+                    [
+                      'label' => 'Year', 'url' => ['/year/index'],
+                      'active' => Yii::$app->controller->id=='year',
+                    ],
 
                 ],
 
