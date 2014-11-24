@@ -19,9 +19,11 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        'js/mimo84-bootstrap-maxlength-37c95be/bower_components/qunit/qunit/qunit.css'
     ];
     public $js = [
         'js/mimo84-bootstrap-maxlength-37c95be/src/bootstrap-maxlength.js',
+        'js/mimo84-bootstrap-maxlength-37c95be/bower_components/qunit/qunit/qunit.js',
         'js/mimo84-bootstrap-maxlength-37c95be/sendMsg.js',
     ];
     public $depends = [
