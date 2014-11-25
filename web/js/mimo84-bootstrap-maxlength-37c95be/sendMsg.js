@@ -13,18 +13,57 @@ jQuery(document).ready(function(){
 	  		$('#ListMenu div[no='+no+']').remove();
 	  });
 	}
-  $('input#addList').click(function(e) {
+/* toggle all checkboxes in group */
+$('.all').click(function(e){
+	e.stopPropagation();
+	var $this = $(this);
+    if($this.is(":checked")) {
+    	$this.parents('.list-group').find("[type=checkbox]").prop("checked",true);
+    }
+    else {
+    	$this.parents('.list-group').find("[type=checkbox]").prop("checked",false);
+        $this.prop("checked",false);
+    }
+    update_checkBox();
+});
 
-  		$('#ListMenu_Hidden > div, #ListMenu_Hidden > div > input[no^="a"]').attr('no','a'+index);
-  		//console.log($('#ListMenu_Hidden').html());
-  		$tmp = $('#ListMenu').append($('#ListMenu_Hidden').html());
-  		$('#ListMenu div[no='+'a'+index+']').hide();
-  		$('#ListMenu div[no='+'a'+index+']').slideDown('200');
-  		index++;
+$('[type=checkbox]').click(function(e){
+  e.stopPropagation();
+	update_checkBox();	
+});
 
-  		update_deleteBtn();
-  });
-
-  console.log($('input[name^="xxx[]"]').val());
+var update_checkBox = function(){
+	var $ans = "";
+	$temp = $("[name=CheckYear]");
+	console.log($temp);
+	$temp.each(function(index){
+		if($($temp[index]).is(":checked"))
+			$ans = $ans+" "+$($temp[index]).attr('value');
+			//console.log($($temp[index]).attr('value'));
+	});
+	if($ans.length>0)
+		$ans = $ans.substring(1);
+	$('#sendmsgform-lstmy').attr('value',$ans);
+	//console.log($lstYear);
+}
+/* toggle checkbox when list group item is clicked */
+$('.list-group a').click(function(e){
+  
+    e.stopPropagation();
+  
+  	var $this = $(this).find("[type=checkbox]");
+    if($this.is(":checked")) {
+    	$this.prop("checked",false);
+    }
+    else {
+    	$this.prop("checked",true);
+    }
+  
+    if ($this.hasClass("all")) {
+    	$this.trigger('click');
+    }
+    update_checkBox();
+    //console.log($this.attr('value'));
+});
 });
 
