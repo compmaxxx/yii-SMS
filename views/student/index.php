@@ -28,7 +28,14 @@ $this->params['breadcrumbs'][] = $this->title;
             'name',
             'phone',
             'email:email',
-            //'major' => $dataProvider->getMajor()->one()->name,
+            [
+              'attribute' => 'major',
+              'value' => 'major.name'
+            ],
+            [
+              'attribute' => 'year',
+              'value' => 'year.year'
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
