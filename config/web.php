@@ -49,9 +49,6 @@ $config = [
         ],
     ],
     'params' => $params,
-    'controllerMap' => [
-      'report' => 'app\controllers\SendToController',
-    ],
 
 ];
 

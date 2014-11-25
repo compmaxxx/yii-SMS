@@ -5,12 +5,12 @@ namespace app\models;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\SendTo;
+use app\models\Report;
 
 /**
- * SendToSearch represents the model behind the search form about `app\models\SendTo`.
+ * ReportSearch represents the model behind the search form about `app\models\Report`.
  */
-class SendToSearch extends SendTo
+class ReportSearch extends Report
 {
     /**
      * @inheritdoc
@@ -18,7 +18,8 @@ class SendToSearch extends SendTo
     public function rules()
     {
         return [
-            [['report_id', 'major_id', 'year_id'], 'integer'],
+            [['id', 'sender_id', 'state'], 'integer'],
+            [['message'], 'safe'],
         ];
     }
 
@@ -40,7 +41,7 @@ class SendToSearch extends SendTo
      */
     public function search($params)
     {
-        $query = SendTo::find();
+        $query = Report::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -51,10 +52,12 @@ class SendToSearch extends SendTo
         }
 
         $query->andFilterWhere([
-            'report_id' => $this->report_id,
-            'major_id' => $this->major_id,
-            'year_id' => $this->year_id,
+            'id' => $this->id,
+            'sender_id' => $this->sender_id,
+            'state' => $this->state,
         ]);
+
+        $query->andFilterWhere(['like', 'message', $this->message]);
 
         return $dataProvider;
     }

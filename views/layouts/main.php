@@ -42,7 +42,7 @@ AppAsset::register($this);
                     ],
                     [
                       'label' => 'Report', 'url' => ['/report/index'],
-                      'active' => Yii::$app->controller->id=='site',
+                      'active' => Yii::$app->controller->id=='report',
                     ],
                     [
                       'label' => 'Student', 'url' => ['/student/index'],

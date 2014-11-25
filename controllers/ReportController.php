@@ -3,17 +3,17 @@
 namespace app\controllers;
 
 use Yii;
-use app\models\Student;
-use app\models\StudentSearch;
+use app\models\Report;
+use app\models\ReportSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
 /**
- * StudentController implements the CRUD actions for Student model.
+ * ReportController implements the CRUD actions for Report model.
  */
-class StudentController extends Controller
+class ReportController extends Controller
 {
     public function behaviors()
     {
@@ -25,26 +25,26 @@ class StudentController extends Controller
                 ],
             ],
             'access' => [
-                'class' => AccessControl::className(),
-                'only' => ['index', 'view', 'create', 'update', 'delete'],
-                'rules' => [
-                    [
-                        'allow' => true,
-                        'actions' => ['index', 'view', 'create', 'update', 'delete'],
-                        'roles' => ['@'],
-                    ],
-                ],
-            ],
+               'class' => AccessControl::className(),
+               'only' => ['update', 'create', 'delete', 'view', 'index'],
+               'rules' => [
+                   [
+                       'allow' => true,
+                       'actions' => ['update', 'create', 'delete', 'view', 'index'],
+                       'roles' => ['@'],
+                   ],
+               ],
+           ],
         ];
     }
 
     /**
-     * Lists all Student models.
+     * Lists all Report models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new StudentSearch();
+        $searchModel = new ReportSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -54,7 +54,7 @@ class StudentController extends Controller
     }
 
     /**
-     * Displays a single Student model.
+     * Displays a single Report model.
      * @param integer $id
      * @return mixed
      */
@@ -66,17 +66,17 @@ class StudentController extends Controller
     }
 
     /**
-     * Creates a new Student model.
+     * Creates a new Report model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Student();
+        $model = new Report();
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
-
             return $this->render('create', [
                 'model' => $model,
             ]);
@@ -84,7 +84,7 @@ class StudentController extends Controller
     }
 
     /**
-     * Updates an existing Student model.
+     * Updates an existing Report model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -103,7 +103,7 @@ class StudentController extends Controller
     }
 
     /**
-     * Deletes an existing Student model.
+     * Deletes an existing Report model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -116,19 +116,18 @@ class StudentController extends Controller
     }
 
     /**
-     * Finds the Student model based on its primary key value.
+     * Finds the Report model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Student the loaded model
+     * @return Report the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Student::findOne($id)) !== null) {
+        if (($model = Report::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-
 }
