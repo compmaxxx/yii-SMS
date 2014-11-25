@@ -49,6 +49,7 @@ $config = [
         ],
     ],
     'params' => $params,
+    'defaultRoute' => 'sendmsg/send',   
 
 ];
 

@@ -9,10 +9,27 @@ use app\models\Student;
 use app\models\Report;
 use app\models\SendTo;
 use app\components\SMS;
+use yii\filters\AccessControl;
 use Yii;
 
 class SendmsgController extends \yii\web\Controller
 {
+    public function behaviors(){
+      return [
+        'access' => [
+            'class' => AccessControl::className(),
+            'only' => ['send'],
+            'rules' => [
+                [
+                    'allow' => true,
+                    'actions' => ['send'],
+                    'roles' => ['@'],
+                ],
+            ],
+        ],
+      ];
+
+    }
     public function actionSend()
     {
     	$model = new SendMsgForm();
@@ -28,7 +45,7 @@ class SendmsgController extends \yii\web\Controller
             $student = Student::findBySql('SELECT phone FROM student WHERE year_id='.$my[1].' AND major_id='.$my[0])->all();
             foreach ($student as $key => $value){
               array_push($lstSend, $value->phone);
-            } 
+            }
           }
 
 
@@ -47,7 +64,7 @@ class SendmsgController extends \yii\web\Controller
               }
           }
 
-          
+
           $report = new Report();
           $report->message = $model->msg;
           if((string)$error_sms[0]=='success')
