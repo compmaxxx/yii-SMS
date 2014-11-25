@@ -41,8 +41,8 @@ AppAsset::register($this);
                       'active' => Yii::$app->controller->id=='sendmsg',
                     ],
                     [
-                      'label' => 'Report', 'url' => ['/report/index'],
-                      'active' => Yii::$app->controller->id=='report',
+                      'label' => 'Report', 'url' => ['/send-to/index'],
+                      'active' => Yii::$app->controller->id=='send-to',
                     ],
                     [
                       'label' => 'Student', 'url' => ['/student/index'],

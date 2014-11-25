@@ -8,9 +8,8 @@ use Yii;
  * This is the model class for table "report".
  *
  * @property integer $id
- * @property integer $sender_id
  * @property string $message
- * @property integer $state
+ * @property string $state
  *
  * @property SendTo[] $sendTos
  */
@@ -30,8 +29,8 @@ class Report extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['sender_id', 'state'], 'integer'],
-            [['message'], 'string']
+            [['message'], 'string'],
+            [['state'], 'string', 'max' => 20]
         ];
     }
 
@@ -42,7 +41,6 @@ class Report extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'sender_id' => 'Sender ID',
             'message' => 'Message',
             'state' => 'State',
         ];

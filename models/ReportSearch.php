@@ -18,8 +18,8 @@ class ReportSearch extends Report
     public function rules()
     {
         return [
-            [['id', 'sender_id', 'state'], 'integer'],
-            [['message'], 'safe'],
+            [['id'], 'integer'],
+            [['message', 'state'], 'safe'],
         ];
     }
 
@@ -53,11 +53,10 @@ class ReportSearch extends Report
 
         $query->andFilterWhere([
             'id' => $this->id,
-            'sender_id' => $this->sender_id,
-            'state' => $this->state,
         ]);
 
-        $query->andFilterWhere(['like', 'message', $this->message]);
+        $query->andFilterWhere(['like', 'message', $this->message])
+            ->andFilterWhere(['like', 'state', $this->state]);
 
         return $dataProvider;
     }

@@ -4,20 +4,17 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\ReportSearch */
+/* @var $searchModel app\models\SendToSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Reports';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="report-index">
+<div class="send-to-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Create Report', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -25,11 +22,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'message:ntext',
-            'state',
+            'report.dateTime',
+            'report.message',
+            'major.name',
+            'year.year',
+            'report.state',
 
-            ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 
