@@ -12,7 +12,7 @@ class SendMsgForm extends Model
     public function rules()
     {
         return [
-            [['msg'], 'required'],
+            [['msg','lstMY'], 'required'],
             ['msg', 'string'],
             ['lstMY','string']
         ];

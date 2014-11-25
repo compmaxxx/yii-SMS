@@ -24,10 +24,12 @@ class AppAsset extends AssetBundle
     public $js = [
         'js/mimo84-bootstrap-maxlength-37c95be/src/bootstrap-maxlength.js',
         'js/mimo84-bootstrap-maxlength-37c95be/bower_components/qunit/qunit/qunit.js',
-        'js/mimo84-bootstrap-maxlength-37c95be/sendMsg.js',
+        'js/bootbox.min.js',
+
     ];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
     ];
+    public $jsOptions = array('position'=>\yii\web\View::POS_HEAD);
 }
